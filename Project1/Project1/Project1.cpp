@@ -19,31 +19,31 @@ unsigned int sbox[16][16]{
 	{0x70,0x3E,0xB5,0x66,0x48,0x03,0xF6,0x0E,0x61,0x35,0x57,0xB9,0x86,0xC1,0x1D,0x9E},
 	{0xE1,0xF8,0x98,0x11,0x69,0xD9,0x8E,0x94,0x9B,0x1E,0x87,0xE9,0xCE,0x55,0x28,0xDF},
 	{0x8C,0xA1,0x89,0x0D,0xBF,0xE6,0x42,0x68,0x41,0x99,0x2D,0x0F,0xB0,0x54,0xBB,0x16}
-};            //ÃÜÔ¿A£¬SBOX                                6D8D                 //Î´¶¨ÒåÁĞ»ìÏı¹æÔò ±ê×¼Ê¹ÓÃÖĞ»ìÏı¹æÔòÓÉsbox»ñµÃ
+};            //å¯†é’¥Aï¼ŒSBOX                                6D8D                 //æœªå®šä¹‰åˆ—æ··æ·†è§„åˆ™ æ ‡å‡†ä½¿ç”¨ä¸­æ··æ·†è§„åˆ™ç”±sboxè·å¾—
 unsigned int orer[4][4]{
 	{0xA6,0xB4,0xC6,0xE8},
 	{0x90,0x88,0x46,0xEE},
 	{0xDC,0x22,0x2A,0x90},
 	{0xE7,0xC8,0x37,0x8D}
-};              //Òì»òÃÜÔ¿          ±ê×¼Ê¹ÓÃÖĞÒì»òÃÜÔ¿Ó¦ÓÃsbox»ñµÃ
+};              //å¼‚æˆ–å¯†é’¥          æ ‡å‡†ä½¿ç”¨ä¸­å¼‚æˆ–å¯†é’¥åº”ç”¨sboxè·å¾—
 unsigned int origion[4][4]{
 	{0x1b,0x2a,0x3e,0x4f},
 	{0x51,0x52,0x48,0x65},
 	{0x47,0x2a,0x7b,0x4a},
 	{0x58,0xb2,0x92,0x00}
-};              //²âÊÔÃ÷ÎÄ
+};              //æµ‹è¯•æ˜æ–‡
 
 unsigned int middle[4][4]{
 
-};             //×ª»»ÖĞ¼äÖµ
+};             //è½¬æ¢ä¸­é—´å€¼
 
 unsigned int middle2[4][4]{
 
-};             //×ª»»ÖĞ¼äÖµ
+};             //è½¬æ¢ä¸­é—´å€¼
 
 unsigned int out[4][4]{
 
-};             //²âÊÔ
+};             //æµ‹è¯•
 
 int i, j, k;
 int ii, jj, kk;
@@ -55,8 +55,8 @@ void de();
 int main() {
 	cout << "AES test" << endl;
 	en();
-	cout << "ÃÜÎÄ:" << endl;
-	for (i = 0; i < 4; i++) {                     //Êä³ö
+	cout << "å¯†æ–‡:" << endl;
+	for (i = 0; i < 4; i++) {                     //è¾“å‡º
 		for (j = 0; j < 4; j++) {
 			cout << hex << middle[i][j] << " ";
 		}
@@ -64,16 +64,16 @@ int main() {
 	}
 	de();
 
-	cout << "Ã÷ÎÄ:" << endl;
-	for (i = 0; i < 4; i++) {                     //Êä³ö
+	cout << "æ˜æ–‡:" << endl;
+	for (i = 0; i < 4; i++) {                     //è¾“å‡º
 		for (j = 0; j < 4; j++) {
 			cout << hex << out[i][j] << " ";
 		}
 		cout << endl;
 	}
-	cout << "Ğ£Ñé£º" << endl;
+	cout << "æ ¡éªŒï¼š" << endl;
 	kk = 0;
-	for (i = 0; i < 4; i++) {                     //Êä³ö
+	for (i = 0; i < 4; i++) {                     //è¾“å‡º
 		for (j = 0; j < 4; j++) {
 			if (out[i][j] == origion[i][j]) cout << 1 << "  ";
 			else {
@@ -83,7 +83,7 @@ int main() {
 		}
 		cout << endl;
 	}
-	cout << "½á¹û£º" << endl;
+	cout << "ç»“æœï¼š" << endl;
 	if (kk == 0) cout << "good" << endl;
 	else cout << "wrong" << endl;
 	return 0;
@@ -98,7 +98,7 @@ void en() {
 		}
 	}
 
-	for (i = 0; i < 4; i++) {                     //ĞĞÂÒĞò
+	for (i = 0; i < 4; i++) {                     //è¡Œä¹±åº
 		for (ii = 0; ii < i + 1; ii++) {
 			tep = middle[i][3];
 			for (j = 0; j < 3; j++) {
@@ -108,7 +108,7 @@ void en() {
 		}
 	}
 
-	for (i = 0; i < 4; i++) {                     //ÁĞ½»»»
+	for (i = 0; i < 4; i++) {                     //åˆ—äº¤æ¢
 		for (ii = 0; ii < 2; ii++) {
 			tep = middle[i][3];
 			for (j = 0; j < 3; j++) {
@@ -118,7 +118,7 @@ void en() {
 		}
 	}
 
-	for (i = 0; i < 4; i++) {                     //Òì»ò
+	for (i = 0; i < 4; i++) {                     //å¼‚æˆ–
 		for (j = 0; j < 4; j++) {
 			middle[i][j] = middle[i][j] ^ orer[i][j];
 		}
@@ -127,23 +127,13 @@ void en() {
 }
 
 void de() {
-	for (i = 0; i < 4; i++) {                     //Òì»ò
+	for (i = 0; i < 4; i++) {                     //å¼‚æˆ–
 		for (j = 0; j < 4; j++) {
 			middle[i][j] = middle[i][j] ^ orer[i][j];
 		}
 	}
 
-	for (i = 0; i < 4; i++) {                     //ĞĞÂÒĞò
-		for (ii = 0; ii < i + 1; ii++) {
-			tep = middle[i][0];
-			for (j = 0; j < 3; j++) {
-				middle[i][j] = middle[i][j+1];
-			}
-			middle[i][3] = tep;
-		}
-	}
-
-	for (i = 0; i < 4; i++) {                     //ÁĞ½»»»
+	for (i = 0; i < 4; i++) {                     //åˆ—äº¤æ¢
 		for (ii = 0; ii < 2; ii++) {
 			tep = middle[i][0];
 			for (j = 0; j < 3; j++) {
@@ -153,6 +143,16 @@ void de() {
 		}
 	}
 
+	for (i = 0; i < 4; i++) {                     //è¡Œä¹±åº
+		for (ii = 0; ii < i + 1; ii++) {
+			tep = middle[i][0];
+			for (j = 0; j < 3; j++) {
+				middle[i][j] = middle[i][j+1];
+			}
+			middle[i][3] = tep;
+		}
+	}
+	
 	for (i = 0; i < 4; i++) {                     //sbox
 		for (j = 0; j < 4; j++) {
 			for (ii = 0; ii < 16; ii++) {
@@ -166,6 +166,6 @@ void de() {
 	}
 }
 
-//AESÊµÏÖ²½Öè£º sbox ĞĞÒÆÎ» ÁĞ»ìÏı Òì»ò
-//ÓÉÓÚ¹¤¿öÖĞĞ¾Æ¬ÔËËãÄÜÁ¦µÍÏÂ£¬´æ´¢¿Õ¼äÓĞÏŞ£¬ÇÒËù¼ÓÃÜµÄÃ÷ÎÄÎªÃ¿´Î²»Í¬µÄËæ»úÊı£¬¹Ê¿ÉÒÔÔÚAES¼ÓÃÜÖĞ½øĞĞ¼ò»¯
-//20181206 ÂÒĞò±ØĞë¼ÓÈë
+//AESå®ç°æ­¥éª¤ï¼š sbox è¡Œç§»ä½ åˆ—æ··æ·† å¼‚æˆ–
+//ç”±äºå·¥å†µä¸­èŠ¯ç‰‡è¿ç®—èƒ½åŠ›ä½ä¸‹ï¼Œå­˜å‚¨ç©ºé—´æœ‰é™ï¼Œä¸”æ‰€åŠ å¯†çš„æ˜æ–‡ä¸ºæ¯æ¬¡ä¸åŒçš„éšæœºæ•°ï¼Œæ•…å¯ä»¥åœ¨AESåŠ å¯†ä¸­è¿›è¡Œç®€åŒ–
+//20181206 ä¹±åºå¿…é¡»åŠ å…¥
