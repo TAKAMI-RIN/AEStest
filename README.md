@@ -1,2 +1,2 @@
 # AEStest
-This is a AES test,in C++
+This is an AES test,in C++
